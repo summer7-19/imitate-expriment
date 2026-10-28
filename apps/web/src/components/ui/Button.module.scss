@@ -1,0 +1,53 @@
+@use "../../styles/tokens" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: 6px $space-3;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.secondary {
+  background: transparent;
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+
+.secondary:hover:not(:disabled) {
+  border-color: var(--border-strong);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--bg-subtle);
+}
+
+.dangerText {
+  background: transparent;
+  color: var(--danger);
+  border-color: var(--border-default);
+}

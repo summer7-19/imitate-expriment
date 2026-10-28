@@ -1,0 +1,71 @@
+@use "../styles/tokens" as *;
+
+.card {
+  display: block;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  border-radius: $radius-md;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+
+.card:hover {
+  border-color: var(--border-strong);
+}
+
+.thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-default);
+  background: var(--bg-subtle);
+}
+
+.thumbInner {
+  position: absolute;
+  inset: 0;
+}
+
+.badge {
+  position: absolute;
+  top: $space-2;
+  right: $space-2;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: $radius-sm;
+  padding: 0 6px;
+  font-size: $font-size-xs;
+  color: var(--text-secondary);
+}
+
+.body {
+  padding: $space-4;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  margin-top: 2px;
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+}
+
+.meta {
+  margin-top: $space-2;
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,114 @@
+@use "../styles/tokens" as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.headRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-3;
+}
+
+.progress {
+  margin-left: auto;
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.sceneBox {
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  border-radius: $radius-md;
+  padding: $space-4;
+}
+
+.sceneLabel {
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+  margin-bottom: $space-2;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  align-items: center;
+}
+
+.actionBtn {
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  border-radius: $radius-md;
+  padding: 6px $space-3;
+  font-size: $font-size-sm;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.actionBtn:hover:enabled {
+  border-color: var(--border-strong);
+}
+
+.actionBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.actionBtnCurrent {
+  border-color: var(--accent);
+}
+
+.paramGroup {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-md;
+  padding: 4px $space-3;
+}
+
+.paramLabel {
+  font-size: $font-size-xs;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.paramSlider {
+  width: 120px;
+}
+
+.measureInput {
+  width: 110px;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-md;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: $font-size-sm;
+  padding: 5px $space-2;
+  font-variant-numeric: tabular-nums;
+}
+
+.feedback {
+  border-left: 2px solid var(--info);
+  padding: $space-2 $space-3;
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border-top: none;
+}
+
+.feedbackOk {
+  border-left-color: var(--success);
+  color: var(--success);
+}
+
+.feedbackErr {
+  border-left-color: var(--danger);
+  color: var(--danger);
+}

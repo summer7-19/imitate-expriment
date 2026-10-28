@@ -1,0 +1,99 @@
+@use "../styles/tokens" as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.body {
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+}
+
+.paramRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.paramChip {
+  border: 1px solid var(--border-default);
+  border-radius: $radius-sm;
+  background: var(--bg-subtle);
+  padding: 2px $space-2;
+  font-size: $font-size-xs;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.calcRow {
+  display: flex;
+  align-items: baseline;
+  gap: $space-3;
+  padding: $space-2 0;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.calcRow:last-child {
+  border-bottom: none;
+}
+
+.calcLabel {
+  width: 200px;
+  flex-shrink: 0;
+  font-size: $font-size-sm;
+  color: var(--text-primary);
+}
+
+.calcResult {
+  margin-left: auto;
+  font-size: $font-size-sm;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.analysis {
+  max-width: 72ch;
+  font-size: $font-size-sm;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.warning {
+  border-left: 2px solid var(--warning);
+  padding-left: $space-3;
+  font-size: $font-size-sm;
+  color: var(--warning);
+  margin-top: $space-2;
+}
+
+.disclaimer {
+  border-left: 2px solid var(--accent);
+  padding-left: $space-3;
+  font-size: $font-size-xs;
+  color: var(--text-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+}
+
+.formRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-3;
+}
+
+.katexInline {
+  font-size: $font-size-sm;
+  color: var(--text-primary);
+}
+
+.exportLink {
+  text-decoration: none;
+}

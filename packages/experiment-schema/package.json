@@ -1,0 +1,16 @@
+{
+  "name": "@physchem/experiment-schema",
+  "version": "0.1.0",
+  "private": true,
+  "description": "前后端共享的实验元数据、参数定义、分镜与渲染任务类型",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

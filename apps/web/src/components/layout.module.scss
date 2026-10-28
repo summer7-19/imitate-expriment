@@ -1,0 +1,92 @@
+@use "../styles/tokens" as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: $space-8 $space-6;
+  flex: 1;
+}
+
+.header {
+  border-bottom: 1px solid var(--border-default);
+  background: var(--bg-surface);
+}
+
+.headerInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: $space-8;
+  padding: 0 $space-6;
+}
+
+.brand {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+}
+
+.navLink {
+  padding: 6px $space-3;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+}
+
+.navLinkActive {
+  background: var(--bg-subtle);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.tagline {
+  margin-left: auto;
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+}
+
+.footer {
+  border-top: 1px solid var(--border-default);
+  background: var(--bg-surface);
+}
+
+.footerInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: $space-3 $space-6;
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+}
+
+.langSelect {
+  margin-left: auto;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-md;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: $font-size-xs;
+  padding: 2px $space-2;
+}

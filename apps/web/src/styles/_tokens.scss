@@ -1,0 +1,35 @@
+// 设计 token：与 STACK DIAGNOSTIC 共用同一套（v2 规范 8.1）
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-6: 24px;
+$space-8: 32px;
+$space-12: 48px;
+
+$radius-sm: 4px;
+$radius-md: 6px;
+
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 24px;
+
+:root {
+  --bg-page: #f7f6f3;
+  --bg-surface: #ffffff;
+  --bg-subtle: #efede8;
+  --text-primary: #2b2a27;
+  --text-secondary: #6b6862;
+  --text-muted: #9c9890;
+  --border-default: #ddd9d2;
+  --border-strong: #c4bfb6;
+  --accent: #4a6b5d;
+  --accent-hover: #3d5a4e;
+  --success: #5a7d5a;
+  --warning: #a67c3d;
+  --danger: #9c4a42;
+  --info: #4a6275;
+  --shadow-sm: 0 1px 2px rgba(43, 42, 39, 0.06);
+}

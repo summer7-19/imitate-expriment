@@ -1,0 +1,15 @@
+@use "../../styles/tokens" as *;
+
+.card {
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  border-radius: $radius-md;
+  padding: $space-4;
+}
+
+.title {
+  margin-bottom: $space-3;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: var(--text-primary);
+}

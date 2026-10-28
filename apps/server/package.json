@@ -1,0 +1,29 @@
+{
+  "name": "@physchem/server",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.3.0",
+    "@fastify/static": "^7.0.4",
+    "@physchem/experiment-data": "workspace:*",
+    "@physchem/experiment-schema": "workspace:*",
+    "@remotion/bundler": "4.0.220",
+    "@remotion/renderer": "4.0.220",
+    "better-sqlite3": "^12.4.1",
+    "drizzle-orm": "^0.44.2",
+    "fastify": "^4.28.1",
+    "remotion": "4.0.220",
+    "tsx": "^4.19.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.5.4",
+    "typescript": "^5.5.4"
+  }
+}

@@ -1,0 +1,26 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - server
+
+  server:
+    build:
+      context: .
+      dockerfile: apps/server/Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      PORT: 3002
+      RENDER_CONCURRENCY: "2"
+    volumes:
+      - server-data:/app/apps/server/data
+      - server-out:/app/apps/server/out
+
+volumes:
+  server-data:
+  server-out:

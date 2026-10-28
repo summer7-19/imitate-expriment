@@ -1,0 +1,21 @@
+{
+  "name": "physchem-lab",
+  "private": true,
+  "version": "0.1.0",
+  "description": "PHYSCHEM LAB · 经典实验程序化动画库",
+  "scripts": {
+    "dev": "concurrently -n web,server -c blue,green \"pnpm --filter @physchem/web dev\" \"pnpm --filter @physchem/server dev\"",
+    "dev:web": "pnpm --filter @physchem/web dev",
+    "dev:server": "pnpm --filter @physchem/server dev",
+    "build": "pnpm --filter @physchem/web build",
+    "typecheck": "pnpm -r --parallel typecheck",
+    "studio": "remotion studio apps/web/src/remotion/index.ts"
+  },
+  "devDependencies": {
+    "@remotion/cli": "4.0.220",
+    "concurrently": "^8.2.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "better-sqlite3", "@parcel/watcher"]
+  }
+}

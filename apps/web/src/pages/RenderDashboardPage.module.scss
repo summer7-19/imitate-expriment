@@ -1,0 +1,151 @@
+@use "../styles/tokens" as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.formRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-3;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: var(--text-primary);
+}
+
+.select {
+  border: 1px solid var(--border-default);
+  border-radius: $radius-md;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: $font-size-sm;
+  padding: 6px $space-2;
+}
+
+.hint {
+  margin-top: $space-3;
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+}
+
+.errorText {
+  border-left: 2px solid var(--danger);
+  padding-left: $space-3;
+  font-size: $font-size-sm;
+  color: var(--danger);
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.job {
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  border-radius: $radius-md;
+  padding: $space-3;
+}
+
+.jobHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-2;
+}
+
+.jobTitle {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.status {
+  font-size: $font-size-sm;
+}
+
+.statusQueued {
+  color: var(--text-secondary);
+}
+
+.statusRendering {
+  color: var(--info);
+}
+
+.statusCompleted {
+  color: var(--success);
+}
+
+.statusFailed {
+  color: var(--danger);
+}
+
+.jobTime {
+  margin-left: auto;
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  margin-top: $space-2;
+  height: 4px;
+  overflow: hidden;
+  border-radius: $radius-sm;
+  background: var(--bg-subtle);
+}
+
+.fill {
+  height: 100%;
+  background: var(--accent);
+}
+
+.jobMeta {
+  margin-top: $space-2;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+}
+
+.jobId {
+  font-variant-numeric: tabular-nums;
+}
+
+.progress {
+  font-variant-numeric: tabular-nums;
+}
+
+.download {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.download:hover {
+  text-decoration: underline;
+}
+
+.clear {
+  border: none;
+  background: transparent;
+  font-size: $font-size-sm;
+  color: var(--danger);
+  cursor: pointer;
+  padding: 0;
+}
+
+.clear:hover {
+  text-decoration: underline;
+}

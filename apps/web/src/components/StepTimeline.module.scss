@@ -1,0 +1,56 @@
+@use "../styles/tokens" as *;
+
+.item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  border-radius: $radius-md;
+  padding: $space-2 $space-3;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.item:hover {
+  background: var(--bg-subtle);
+}
+
+.itemCurrent {
+  background: var(--bg-subtle);
+}
+
+.inner {
+  border-left: 2px solid transparent;
+  padding-left: $space-3;
+}
+
+.innerCurrent {
+  border-left-color: var(--accent);
+}
+
+.title {
+  font-size: $font-size-sm;
+  color: var(--text-muted);
+}
+
+.titleDone {
+  color: var(--text-secondary);
+}
+
+.titleCurrent {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.desc {
+  margin-top: 2px;
+  font-size: $font-size-xs;
+  color: var(--text-secondary);
+}
+
+.keyPoint {
+  margin-top: $space-1;
+  font-size: $font-size-xs;
+  color: var(--accent);
+}

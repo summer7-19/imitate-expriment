@@ -1,0 +1,74 @@
+@use "../styles/tokens" as *;
+
+.question {
+  margin-bottom: $space-6;
+}
+
+.stem {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  border-radius: $radius-md;
+  padding: $space-2 $space-3;
+  font-size: $font-size-sm;
+  color: var(--text-primary);
+  cursor: pointer;
+  margin-top: $space-2;
+  transition: border-color 0.15s;
+}
+
+.option:hover:enabled {
+  border-color: var(--border-strong);
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.optionPicked {
+  border-color: var(--accent);
+  background: var(--bg-subtle);
+}
+
+.feedback {
+  margin-top: $space-3;
+  padding-left: $space-3;
+  border-left: 2px solid transparent;
+}
+
+.feedbackOk {
+  border-left-color: var(--success);
+}
+
+.feedbackErr {
+  border-left-color: var(--danger);
+}
+
+.verdict {
+  font-size: $font-size-sm;
+  font-weight: 600;
+}
+
+.verdictOk {
+  color: var(--success);
+}
+
+.verdictErr {
+  color: var(--danger);
+}
+
+.explanation {
+  margin-top: $space-1;
+  padding-top: $space-2;
+  border-top: 1px solid var(--border-default);
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+}

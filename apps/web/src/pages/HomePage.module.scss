@@ -1,0 +1,84 @@
+@use "../styles/tokens" as *;
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-3;
+  margin-bottom: $space-6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-4;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+}
+
+.filterBtn {
+  padding: 6px $space-3;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+
+.filterBtn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.filterBtnActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+  color: #fff;
+}
+
+.search {
+  width: 224px;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-md;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: $font-size-sm;
+  padding: 6px $space-3;
+}
+
+.search::placeholder {
+  color: var(--text-muted);
+}
+
+.note {
+  margin-top: $space-6;
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+}
+
+.toolbar {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-2;
+}

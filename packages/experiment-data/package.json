@@ -1,0 +1,19 @@
+{
+  "name": "@physchem/experiment-data",
+  "version": "0.2.0",
+  "private": true,
+  "description": "六实验的双语内容与物理化学计算模型（Web 与服务端共用；虚拟操作答案不在本包内）",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@physchem/experiment-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

@@ -1,0 +1,102 @@
+@use "../styles/tokens" as *;
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: var(--text-primary);
+}
+
+.controlBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  width: 176px;
+}
+
+.readout {
+  font-size: $font-size-sm;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.unit {
+  margin-left: 4px;
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+}
+
+.footer {
+  margin-top: $space-4;
+  padding-top: $space-3;
+  border-top: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.errorText {
+  margin-top: $space-2;
+  padding-left: $space-2;
+  border-left: 2px solid var(--danger);
+  font-size: $font-size-xs;
+  color: var(--danger);
+}
+
+.rangeRow {
+  margin-bottom: $space-3;
+}
+
+.rangeRow:last-child {
+  margin-bottom: 0;
+}
+
+.rangeHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+  font-size: $font-size-sm;
+}
+
+.rangeValue {
+  font-size: $font-size-xs;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.rangeNote {
+  font-size: $font-size-xs;
+  color: var(--text-muted);
+}
+
+.scenarioActive {
+  margin-top: $space-2;
+  border-left: 2px solid var(--danger);
+  padding-left: $space-3;
+}
+
+.scenarioText {
+  font-size: $font-size-sm;
+  color: var(--danger);
+}
+
+.ok {
+  color: var(--success);
+}
+
+.warn {
+  color: var(--warning);
+}

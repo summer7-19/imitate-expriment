@@ -1,0 +1,8 @@
+{
+  // 仅作为仓库根占位：Remotion CLI 会查找根 tsconfig.json；
+  // 各包的类型检查配置在各自目录下（apps/web、apps/server、packages/experiment-schema）。
+  "compilerOptions": {
+    "skipLibCheck": true
+  },
+  "include": []
+}

@@ -1,0 +1,28 @@
+@use "../styles/tokens" as *;
+
+.wrapper {
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  border-radius: $radius-md;
+  padding: $space-4;
+}
+
+.controls {
+  margin-top: $space-3;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  background: var(--bg-subtle);
+  border-radius: $radius-md;
+  padding: $space-2 $space-3;
+}
+
+.sliderBox {
+  flex: 1;
+}
+
+.timecode {
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
