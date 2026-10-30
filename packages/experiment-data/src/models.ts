@@ -199,7 +199,227 @@ export function freezingPointDepression(
   return { deltaTf, tfSolution: TF_BENZENE_PURE - deltaTf };
 }
 
+/* ---------- 凸透镜成像 ---------- */
+
+export type LensCase = "reduced-real" | "equal-real" | "magnified-real" | "virtual" | "none";
+
+export interface LensImage {
+  /** 像距 cm；虚像为负（像在物侧），u=f 时为 Infinity */
+  imageDistance: number;
+  /** 放大率（带符号，负数表示倒立） */
+  magnification: number;
+  real: boolean;
+  inverted: boolean;
+  /** u = f 时不成像 */
+  none: boolean;
+}
+
+/** 薄透镜成像：1/f = 1/u + 1/v，v 为负表示虚像 */
+export function thinLensImage(focalLengthCm: number, objectDistanceCm: number): LensImage {
+  const f = focalLengthCm;
+  const u = objectDistanceCm;
+  if (Math.abs(u - f) < 1e-6) {
+    return { imageDistance: Infinity, magnification: Infinity, real: false, inverted: false, none: true };
+  }
+  const v = (u * f) / (u - f);
+  const m = -v / u;
+  return { imageDistance: v, magnification: m, real: v > 0, inverted: m < 0, none: false };
+}
+
+/** 成像性质判定（用于选文案，不做数值计算） */
+export function lensCase(focalLengthCm: number, objectDistanceCm: number): LensCase {
+  const f = focalLengthCm;
+  const u = objectDistanceCm;
+  if (Math.abs(u - f) < 1e-6) return "none";
+  if (u < f) return "virtual";
+  if (Math.abs(u - 2 * f) < 1e-6) return "equal-real";
+  if (u > 2 * f) return "reduced-real";
+  return "magnified-real";
+}
+
+/* ---------- 伏安法测电阻 ---------- */
+
+/** 伏安法测量：R = U/I；电流表并联在电阻两端等效为短路 */
+export function measuredResistance(
+  voltage: number,
+  resistance: number,
+  connection: string,
+  rheostatFraction: number,
+): { current: number; voltage: number; shorted: boolean } {
+  if (connection === "ammeterParallel") {
+    // 电流表内阻很小，并联在电阻两端近似短路，回路电流由变阻器决定
+    const r = Math.max(0.5, 20 * (1 - rheostatFraction));
+    return { current: voltage / r, voltage: 0, shorted: true };
+  }
+  if (connection === "voltmeterSeries") {
+    // 电压表内阻很大（≈3 kΩ），回路电流几乎为零
+    return { current: voltage / 3000, voltage: voltage, shorted: false };
+  }
+  return { current: voltage / resistance, voltage, shorted: false };
+}
+
+/* ---------- 杠杆平衡 ---------- */
+
+/** 杠杆平衡判定：|F1·L1 − F2·L2|，返回倾斜角（度）与是否平衡 */
+export function leverBalance(
+  leftForce: number,
+  leftArm: number,
+  rightForce: number,
+  rightArm: number,
+): { torqueLeft: number; torqueRight: number; diff: number; balanced: boolean; tiltDeg: number } {
+  const torqueLeft = leftForce * leftArm;
+  const torqueRight = rightForce * rightArm;
+  const diff = torqueLeft - torqueRight;
+  const total = Math.max(1e-6, torqueLeft + torqueRight);
+  // 最大倾斜 12°：差值占比越大越倾斜
+  const tiltDeg = (diff / total) * 12;
+  return { torqueLeft, torqueRight, diff, balanced: Math.abs(diff) < 0.05 * total, tiltDeg };
+}
+
+/* ---------- 氧气制取 ---------- */
+
+export type OxygenMethod = "kmno4" | "h2o2";
+
+/** 产氧速率 mL/s（教学模型）：高锰酸钾需加热，过氧化氢靠二氧化锰催化 */
+export function oxygenRate(
+  method: OxygenMethod,
+  catalystAmountG: number,
+  heated: boolean,
+): number {
+  if (method === "h2o2") {
+    // 常温下 MnO₂ 即可催化分解，水浴加热只是加快速率
+    return catalystAmountG * 4 + (heated ? 3 : 0.8);
+  }
+  return heated ? 6 : 0;
+}
+
+/* ---------- 二氧化碳制取 ---------- */
+
+export type CarbonateAcid = "diluteHCl" | "diluteH2SO4";
+
+/** 生成 CO₂ 体积 mL：稀硫酸与石灰石生成微溶的硫酸钙覆盖表面，反应很快停止 */
+export function carbonDioxideVolume(
+  acid: CarbonateAcid,
+  acidVolumeMl: number,
+  marbleMassG: number,
+  elapsedS: number,
+): { volumeMl: number; rateMlPerS: number; stopped: boolean } {
+  const maxByAcid = acid === "diluteHCl" ? acidVolumeMl * 12 : acidVolumeMl * 1.5;
+  const maxByMarble = marbleMassG * 22;
+  const cap = Math.min(maxByAcid, maxByMarble);
+  if (acid === "diluteH2SO4") {
+    const t = Math.min(1, elapsedS / 4);
+    return { volumeMl: cap * (1 - (1 - t) ** 2), rateMlPerS: 0, stopped: elapsedS >= 4 };
+  }
+  const t = Math.min(1, elapsedS / 10);
+  return { volumeMl: cap * (1 - (1 - t) ** 2), rateMlPerS: cap / 10, stopped: false };
+}
+
+/* ---------- 粗盐提纯 ---------- */
+
+/** 产率：洗涤次数与水量影响可溶性杂质残留 */
+export function saltYield(
+  waterVolumeMl: number,
+  rinseCount: number,
+): { yieldPercent: number; purityPercent: number } {
+  const dissolved = Math.min(1, waterVolumeMl / 35);
+  const rinse = Math.min(1, 0.55 + rinseCount * 0.15);
+  const yieldPercent = 88 * dissolved * rinse;
+  const purityPercent = Math.min(99.5, 93 + rinseCount * 1.6);
+  return { yieldPercent, purityPercent };
+}
+
+/* ---------- 牛顿第二定律 ---------- */
+
+/** a = (m_h·g − μ·M·g) / (M + m_h)；未平衡摩擦力时 μ=0.12 */
+export function cartAcceleration(
+  cartMassKg: number,
+  hangingMassKg: number,
+  frictionCompensated: boolean,
+): { acceleration: number; tension: number; friction: number } {
+  const g = 9.8;
+  const mu = frictionCompensated ? 0 : 0.12;
+  const friction = mu * cartMassKg * g;
+  const acceleration = (hangingMassKg * g - friction) / (cartMassKg + hangingMassKg);
+  const tension = hangingMassKg * (g - acceleration);
+  return { acceleration: Math.max(0, acceleration), tension, friction };
+}
+
+/* ---------- 电源电动势与内阻 ---------- */
+
+/** 闭合电路欧姆定律：I = E/(R+r)，U = E − I·r */
+export function terminalVoltage(
+  emf: number,
+  internalR: number,
+  externalR: number,
+  ammeterInternal: boolean,
+): { current: number; voltage: number } {
+  const totalR = externalR + internalR + (ammeterInternal ? 0.1 : 0);
+  const current = emf / totalR;
+  return { current, voltage: emf - current * internalR };
+}
+
+/* ---------- 机械能守恒 ---------- */
+
+/** 自由落体：下落高度 h 时的速度 v = √(2gh)；有空气阻力时取阻尼系数 0.92 */
+export function fallingSpeed(heightM: number, airResistance: boolean): number {
+  const g = 9.8;
+  const v = Math.sqrt(2 * g * heightM);
+  return airResistance ? v * 0.92 : v;
+}
+
+/* ---------- 配制溶液 ---------- */
+
+/** 配制一定物质的量浓度：需溶质质量 m = c·V·M */
+export function soluteMassG(
+  concentrationMolPerL: number,
+  volumeMl: number,
+  molarMassGPerMol: number,
+): number {
+  return concentrationMolPerL * (volumeMl / 1000) * molarMassGPerMol;
+}
+
+/** 实际浓度：洗涤次数不足有溶质残留；仰视定容使体积偏大、俯视偏小 */
+export function actualConcentration(
+  targetConcentration: number,
+  rinseCount: number,
+  eyeLevel: string,
+): number {
+  const loss = Math.max(0, 3 - rinseCount) * 0.015;
+  const volumeFactor = eyeLevel === "up" ? 1.04 : eyeLevel === "down" ? 0.97 : 1;
+  return targetConcentration * (1 - loss) / volumeFactor;
+}
+
+/* ---------- 原电池 ---------- */
+
+/** 铜锌原电池：标准电动势 1.10 V，内阻约 0.6 Ω */
+export function galvanicCurrent(
+  externalR: number,
+  saltBridgePresent: boolean,
+): { emf: number; current: number } {
+  const emf = 1.1;
+  if (!saltBridgePresent) return { emf, current: 0 };
+  return { emf, current: emf / (externalR + 0.6) };
+}
+
+/* ---------- 化学反应速率 ---------- */
+
+/** 温度/浓度/催化剂/接触面积对相对速率的综合影响（教学归一化模型） */
+export function relativeRate(
+  temperatureC: number,
+  concentrationMolPerL: number,
+  catalyst: boolean,
+  powder: boolean,
+): number {
+  const temperatureFactor = Math.pow(2, (temperatureC - 25) / 10);
+  const concentrationFactor = concentrationMolPerL / 0.5;
+  const catalystFactor = catalyst ? 3 : 1;
+  const surfaceFactor = powder ? 1.6 : 1;
+  return temperatureFactor * concentrationFactor * catalystFactor * surfaceFactor;
+}
+
 /* ---------- 分光光度法 ---------- */
+
 
 export const EPS_KMnO4_525 = 2.0e4; // 高锰酸钾 525nm 表观摩尔吸光系数 L/(mol·cm)
 

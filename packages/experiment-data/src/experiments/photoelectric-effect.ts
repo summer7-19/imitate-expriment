@@ -5,7 +5,7 @@ const stepFrames = [360, 420, 330, 360];
 
 export const photoelectricEffectMeta: ExperimentMeta = {
   id: "photoelectric-effect",
-  category: "physics",
+  category: "senior-physics",
   difficulty: 2,
   modes: ["animation"],
   compositionId: "photoelectric-effect",

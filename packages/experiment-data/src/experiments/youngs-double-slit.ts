@@ -5,7 +5,7 @@ const stepFrames = [360, 420, 300, 330];
 
 export const youngsDoubleSlitMeta: ExperimentMeta = {
   id: "youngs-double-slit",
-  category: "physics",
+  category: "senior-physics",
   difficulty: 1,
   modes: ["animation", "virtual-ops"],
   compositionId: "youngs-double-slit",

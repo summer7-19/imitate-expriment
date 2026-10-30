@@ -3,8 +3,10 @@
 .wrapper {
   border: 1px solid var(--border-default);
   background: var(--bg-surface);
-  border-radius: $radius-md;
-  padding: $space-4;
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-card);
+  padding: $space-3;
+  overflow: hidden;
 }
 
 .controls {
@@ -13,7 +15,8 @@
   align-items: center;
   gap: $space-3;
   background: var(--bg-subtle);
-  border-radius: $radius-md;
+  border: 1px solid var(--border-faint);
+  border-radius: $radius-control;
   padding: $space-2 $space-3;
 }
 

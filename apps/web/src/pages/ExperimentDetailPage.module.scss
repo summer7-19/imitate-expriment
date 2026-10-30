@@ -1,31 +1,43 @@
 @use "../styles/tokens" as *;
 
 .headerBlock {
-  margin-bottom: $space-4;
+  margin-bottom: $space-6;
+  padding-bottom: $space-4;
+  border-bottom: 1px solid var(--border-default);
 }
 
 .back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px $space-3;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-pill;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
   font-size: $font-size-sm;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
 }
 
 .back:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-subtle);
   color: var(--text-primary);
 }
 
 .titleRow {
-  margin-top: $space-2;
+  margin-top: $space-3;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: $space-3;
+  gap: $space-2;
 }
 
 .subtitle {
-  margin-top: 2px;
-  font-size: $font-size-sm;
+  margin-top: 6px;
+  font-size: 15px;
   color: var(--text-secondary);
 }
 
@@ -36,7 +48,7 @@
 .columns {
   display: flex;
   flex-direction: column;
-  gap: $space-4;
+  gap: $space-6;
 }
 
 @media (min-width: 1024px) {
@@ -68,6 +80,7 @@
 }
 
 .infoGrid {
+  margin-top: $space-6;
   display: grid;
   grid-template-columns: 1fr;
   gap: $space-4;
@@ -82,7 +95,7 @@
 .principle {
   max-width: 72ch;
   font-size: $font-size-sm;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--text-secondary);
 }
 
@@ -94,12 +107,13 @@
   flex-direction: column;
   gap: 6px;
   font-size: $font-size-sm;
+  line-height: 1.55;
   color: var(--text-secondary);
 }
 
 .listItem {
-  border-left: 2px solid var(--border-default);
-  padding-left: $space-2;
+  border-left: 1px solid var(--border-default);
+  padding-left: 10px;
 }
 
 .listItemWarn {
@@ -110,7 +124,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: $space-2;
-  margin-top: $space-4;
+  margin-top: $space-6;
 }
 
 .pageTitle {

@@ -136,7 +136,7 @@ export function VirtualOpsPage() {
   return (
     <div className={styles.page}>
       <div className={styles.headRow}>
-        <Link to={`/experiment/${id}`} className={styles.progress}>
+        <Link to={`/experiment/${id}`} className={styles.backLink}>
           {t("vops.back")}
         </Link>
         <h1>

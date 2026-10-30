@@ -4,25 +4,28 @@
   display: block;
   width: 100%;
   text-align: left;
-  border: none;
-  background: transparent;
-  border-radius: $radius-md;
+  border: 1px solid var(--border-faint);
+  background: var(--bg-surface);
+  border-radius: $radius-control;
   padding: $space-2 $space-3;
   cursor: pointer;
-  transition: background-color 0.15s;
+  transition: background-color 0.15s, border-color 0.15s;
 }
 
 .item:hover {
   background: var(--bg-subtle);
+  border-color: var(--border-default);
 }
 
-.itemCurrent {
-  background: var(--bg-subtle);
+.itemCurrent,
+.itemCurrent:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
 }
 
 .inner {
-  border-left: 2px solid transparent;
-  padding-left: $space-3;
+  border-left: 1px solid transparent;
+  padding-left: 10px;
 }
 
 .innerCurrent {
@@ -52,5 +55,5 @@
 .keyPoint {
   margin-top: $space-1;
   font-size: $font-size-xs;
-  color: var(--accent);
+  color: var(--accent-ink);
 }

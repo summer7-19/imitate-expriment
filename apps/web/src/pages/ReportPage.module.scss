@@ -6,6 +6,27 @@
   gap: $space-4;
 }
 
+.back {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px $space-3;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-pill;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+
+.back:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
 .body {
   font-size: $font-size-sm;
   color: var(--text-secondary);
@@ -19,9 +40,9 @@
 
 .paramChip {
   border: 1px solid var(--border-default);
-  border-radius: $radius-sm;
+  border-radius: $radius-pill;
   background: var(--bg-subtle);
-  padding: 2px $space-2;
+  padding: 1px $space-2;
   font-size: $font-size-xs;
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
@@ -32,7 +53,7 @@
   align-items: baseline;
   gap: $space-3;
   padding: $space-2 0;
-  border-bottom: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-faint);
 }
 
 .calcRow:last-child {
@@ -57,22 +78,28 @@
 .analysis {
   max-width: 72ch;
   font-size: $font-size-sm;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--text-secondary);
 }
 
 .warning {
-  border-left: 2px solid var(--warning);
-  padding-left: $space-3;
+  border: 1px solid rgba(166, 124, 61, 0.4);
+  border-radius: $radius-control;
+  background: rgba(166, 124, 61, 0.06);
+  padding: $space-2 $space-3;
   font-size: $font-size-sm;
   color: var(--warning);
   margin-top: $space-2;
 }
 
 .disclaimer {
-  border-left: 2px solid var(--accent);
-  padding-left: $space-3;
+  border: 1px solid var(--border-default);
+  border-left-color: var(--accent);
+  border-radius: $radius-control;
+  background: var(--bg-surface);
+  padding: $space-2 $space-3;
   font-size: $font-size-xs;
+  line-height: 1.6;
   color: var(--text-secondary);
 }
 
@@ -80,6 +107,7 @@
   display: flex;
   gap: $space-2;
   flex-wrap: wrap;
+  margin-left: auto;
 }
 
 .formRow {
@@ -95,5 +123,22 @@
 }
 
 .exportLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-control;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: var(--text-primary);
   text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.exportLink:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-strong);
 }

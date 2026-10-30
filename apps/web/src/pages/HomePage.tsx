@@ -10,8 +10,10 @@ type CategoryFilter = "all" | ExperimentCategory;
 
 const FILTERS: { value: CategoryFilter }[] = [
   { value: "all" },
-  { value: "physics" },
-  { value: "chemistry" },
+  { value: "junior-physics" },
+  { value: "junior-chemistry" },
+  { value: "senior-physics" },
+  { value: "senior-chemistry" },
   { value: "physical-chemistry" },
 ];
 
@@ -70,14 +72,30 @@ export function HomePage() {
               </button>
             ))}
           </div>
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder={t("search.placeholder")}
-            aria-label={t("search.label")}
-            className={styles.search}
-          />
+          <div className={styles.searchField}>
+            <svg
+              className={styles.searchIcon}
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.6-3.6" />
+            </svg>
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={t("search.placeholder")}
+              aria-label={t("search.label")}
+              className={styles.search}
+            />
+          </div>
         </div>
       </div>
 

@@ -2,9 +2,13 @@
 
 .tag {
   display: inline-block;
-  padding: 1px 6px;
-  border-radius: $radius-sm;
+  padding: 1px 8px;
+  border: 1px solid var(--border-faint);
+  border-radius: $radius-pill;
   background: var(--bg-subtle);
-  font-size: $font-size-xs;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  white-space: nowrap;
   color: var(--text-secondary);
 }

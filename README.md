@@ -6,9 +6,12 @@
 
 ## 功能（v2 MVP）
 
-- **6 个实验**（物理 3 + 化学/物化 3），每个含：分镜动画、可调参数、1 个错误场景、3 道小测（含多选）、正常范围判定
-  - 物理：杨氏双缝干涉、光电效应测普朗克常量、（v1 遗产）—
-  - 化学/物化：酸碱滴定、电导滴定、分光光度法测浓度、凝固点降低测摩尔质量
+- **18 个实验**，按学段与学科分为 5 类，每个含：分镜动画、可调参数、1 个错误场景、3 道小测（含多选）、正常范围判定
+  - 初中物理（3）：凸透镜成像规律、伏安法测电阻、探究杠杆平衡条件
+  - 初中化学（3）：氧气的实验室制取与性质、二氧化碳的实验室制取与检验、粗盐提纯
+  - 高中物理（5）：杨氏双缝干涉、光电效应测普朗克常量、验证牛顿第二定律、验证机械能守恒定律、测量电源的电动势和内阻
+  - 高中化学（4）：酸碱滴定、配制一定物质的量浓度的溶液、探究影响化学反应速率的因素、原电池
+  - 物化（3）：电导滴定、分光光度法测浓度、凝固点降低测摩尔质量
 - **双语 zh-CN / en-US**：顶栏切换，实验内容与动画内文字全部随语言变化（`ja-JP` 架构预留）
 - **虚拟操作模式**（酸碱滴定 / 杨氏双缝 / 电导滴定）：交互实验台、操作序列服务端判定、
   检查点文字反馈；**正确答案只存服务端 SQLite，前端 bundle 不含答案**
@@ -37,15 +40,15 @@ pnpm dev          # 前端 5173 + 渲染/判定/报告服务 3002（端口占用
 
 ```
 apps/web          React 18 + Vite；CSS Modules + SCSS（无 Tailwind、无第三方 UI 库）
-  src/remotion    6 个 Composition（props: {lang, params}）+ 共享舞台组件
+  src/remotion    18 个 Composition（props: {lang, params}）+ 共享舞台组件
   src/i18n        自研 useI18n + TS 字典
 apps/server       Fastify + SQLite(Drizzle) + 渲染队列（子进程 worker）
   src/db          6 张表：experiments / experiment_contents / virtual_ops /
                   reports / quiz_attempts / render_jobs；TS 数据源幂等种子
   src/data        虚拟操作序列与检查点判定（服务端专属，不下发）
-  src/report      6 个实验的报告计算器（确定性伪随机模拟 + 模板误差分析）
+  src/report      18 个实验的报告计算器（确定性伪随机模拟 + 模板误差分析）
 packages/experiment-schema   共享类型（meta/content 拆分、virtual-ops、report、render-job）
-packages/experiment-data     6 实验×双语内容 + 物理/化学计算模型（前后端共用，不含答案）
+packages/experiment-data     18 实验×双语内容 + 物理/化学计算模型（前后端共用，不含答案）
 ```
 
 ### API

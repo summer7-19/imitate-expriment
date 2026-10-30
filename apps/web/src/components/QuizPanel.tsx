@@ -7,7 +7,7 @@ import styles from "./QuizPanel.module.scss";
 const sameSet = (a: string[], b: string[]) =>
   a.length === b.length && a.every((x) => b.includes(x));
 
-/** 测验面板：单选/多选；正确/错误反馈只用文字 + 左侧 2px 色条，不用整块绿/红背景 */
+/** 测验面板：单选/多选；正确/错误反馈只用文字 + 细边框提示，不用整块绿/红背景 */
 export function QuizPanel({ content }: { content: ExperimentContent }) {
   const { t } = useI18n();
   /** qid -> 已选选项 id 列表 */
@@ -31,7 +31,7 @@ export function QuizPanel({ content }: { content: ExperimentContent }) {
   if (content.quiz.length === 0) return null;
 
   return (
-    <Card title={t("quiz.title")}>
+    <Card title={t("quiz.title")} className={styles.panel}>
       {content.quiz.map((question, qi) => {
         const picked = chosen[question.id] ?? [];
         const answered = picked.length > 0;

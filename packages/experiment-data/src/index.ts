@@ -5,6 +5,18 @@ import { conductometricTitrationContent, conductometricTitrationMeta } from "./e
 import { photoelectricEffectContent, photoelectricEffectMeta } from "./experiments/photoelectric-effect";
 import { freezingPointDepressionContent, freezingPointDepressionMeta } from "./experiments/freezing-point-depression";
 import { spectrophotometryContent, spectrophotometryMeta } from "./experiments/spectrophotometry";
+import { lensImagingContent, lensImagingMeta } from "./experiments/lens-imaging";
+import { voltmeterAmmeterResistanceContent, voltmeterAmmeterResistanceMeta } from "./experiments/voltmeter-ammeter-resistance";
+import { leverBalanceContent, leverBalanceMeta } from "./experiments/lever-balance";
+import { oxygenPreparationContent, oxygenPreparationMeta } from "./experiments/oxygen-preparation";
+import { carbonDioxidePreparationContent, carbonDioxidePreparationMeta } from "./experiments/carbon-dioxide-preparation";
+import { crudeSaltPurificationContent, crudeSaltPurificationMeta } from "./experiments/crude-salt-purification";
+import { solutionPreparationContent, solutionPreparationMeta } from "./experiments/solution-preparation";
+import { newtonsSecondLawContent, newtonsSecondLawMeta } from "./experiments/newtons-second-law";
+import { mechanicalEnergyConservationContent, mechanicalEnergyConservationMeta } from "./experiments/mechanical-energy-conservation";
+import { emfInternalResistanceContent, emfInternalResistanceMeta } from "./experiments/emf-internal-resistance";
+import { reactionRateFactorsContent, reactionRateFactorsMeta } from "./experiments/reaction-rate-factors";
+import { galvanicCellContent, galvanicCellMeta } from "./experiments/galvanic-cell";
 
 export * from "./models";
 
@@ -15,6 +27,18 @@ export const EXPERIMENT_METAS: ExperimentMeta[] = [
   photoelectricEffectMeta,
   freezingPointDepressionMeta,
   spectrophotometryMeta,
+  lensImagingMeta,
+  voltmeterAmmeterResistanceMeta,
+  leverBalanceMeta,
+  oxygenPreparationMeta,
+  carbonDioxidePreparationMeta,
+  crudeSaltPurificationMeta,
+  solutionPreparationMeta,
+  newtonsSecondLawMeta,
+  mechanicalEnergyConservationMeta,
+  emfInternalResistanceMeta,
+  reactionRateFactorsMeta,
+  galvanicCellMeta,
 ];
 
 const CONTENTS: Record<string, Partial<Record<Locale, ExperimentContent>>> = {
@@ -24,6 +48,18 @@ const CONTENTS: Record<string, Partial<Record<Locale, ExperimentContent>>> = {
   "photoelectric-effect": photoelectricEffectContent,
   "freezing-point-depression": freezingPointDepressionContent,
   spectrophotometry: spectrophotometryContent,
+  "lens-imaging": lensImagingContent,
+  "voltmeter-ammeter-resistance": voltmeterAmmeterResistanceContent,
+  "lever-balance": leverBalanceContent,
+  "oxygen-preparation": oxygenPreparationContent,
+  "carbon-dioxide-preparation": carbonDioxidePreparationContent,
+  "crude-salt-purification": crudeSaltPurificationContent,
+  "solution-preparation": solutionPreparationContent,
+  "newtons-second-law": newtonsSecondLawContent,
+  "mechanical-energy-conservation": mechanicalEnergyConservationContent,
+  "emf-internal-resistance": emfInternalResistanceContent,
+  "reaction-rate-factors": reactionRateFactorsContent,
+  "galvanic-cell": galvanicCellContent,
 };
 
 export const SUPPORTED_LOCALES: Locale[] = ["zh-CN", "en-US"];

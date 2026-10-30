@@ -10,31 +10,52 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: $space-8 $space-6;
+  padding: $space-8 $space-6 $space-12;
   flex: 1;
 }
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   border-bottom: 1px solid var(--border-default);
-  background: var(--bg-surface);
+  background: var(--bg-page);
 }
 
 .headerInner {
   max-width: 1280px;
   margin: 0 auto;
-  height: 56px;
+  height: 64px;
   display: flex;
   align-items: center;
-  gap: $space-8;
+  gap: $space-6;
   padding: 0 $space-6;
 }
 
 .brand {
-  font-size: $font-size-sm;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: var(--font-display);
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   color: var(--text-primary);
   text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  background: var(--accent-soft);
+}
+
+.brand:hover {
+  color: var(--accent-ink);
 }
 
 .nav {
@@ -45,48 +66,94 @@
 
 .navLink {
   padding: 6px $space-3;
-  border-radius: $radius-md;
+  border: 1px solid transparent;
+  border-radius: $radius-control;
   font-size: $font-size-sm;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
 }
 
 .navLink:hover {
+  background: var(--bg-surface);
+  border-color: var(--border-faint);
   color: var(--text-primary);
 }
 
 .navLinkActive {
-  background: var(--bg-subtle);
+  background: var(--bg-surface);
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-control);
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .tagline {
   margin-left: auto;
   font-size: $font-size-xs;
   color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .footer {
   border-top: 1px solid var(--border-default);
-  background: var(--bg-surface);
 }
 
 .footerInner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: $space-3 $space-6;
+  padding: $space-4 $space-6;
   font-size: $font-size-xs;
   color: var(--text-muted);
 }
 
 .langSelect {
-  margin-left: auto;
   border: 1px solid var(--border-default);
-  border-radius: $radius-md;
+  border-radius: $radius-control;
   background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
   color: var(--text-primary);
   font-size: $font-size-xs;
-  padding: 2px $space-2;
+  padding: 5px $space-2;
+  margin-left: $space-2;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.langSelect:hover {
+  border-color: var(--border-strong);
+}
+
+@media (max-width: 860px) {
+  .tagline {
+    display: none;
+  }
+
+  .langSelect {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .headerInner {
+    height: auto;
+    flex-wrap: wrap;
+    row-gap: $space-2;
+    padding: $space-2 $space-4;
+  }
+
+  .brand {
+    letter-spacing: 0.08em;
+  }
+
+  .nav {
+    order: 3;
+    width: 100%;
+  }
+
+  .main {
+    padding: $space-6 $space-4 $space-8;
+  }
 }

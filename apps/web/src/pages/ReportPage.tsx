@@ -99,7 +99,7 @@ function ReportView({
 
   return (
     <div className={styles.page}>
-      <Link to={`/experiment/${content.experimentId}`} className={styles.body}>
+      <Link to={`/experiment/${content.experimentId}`} className={styles.back}>
         {t("report.back")}
       </Link>
       <div className={styles.formRow}>
@@ -116,7 +116,7 @@ function ReportView({
           </Button>
           {report ? (
             <a href={reportExportUrl(report.id)} className={styles.exportLink} download>
-              <Button variant="secondary">{t("report.exportMd")}</Button>
+              {t("report.exportMd")}
             </a>
           ) : null}
         </div>

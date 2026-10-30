@@ -1,31 +1,46 @@
 @use "../../styles/tokens" as *;
 
+/* 分段式 Tabs：外框 + 内嵌按钮，均为 1px 边框 + 圆角 */
 .tabs {
   display: inline-flex;
-  gap: $space-4;
-  border-bottom: 1px solid var(--border-default);
+  gap: $space-1;
+  max-width: 100%;
+  padding: $space-1;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-lg;
+  background: var(--bg-subtle);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tab {
-  padding: 6px 2px;
+  padding: 5px $space-3;
   background: transparent;
-  border: none;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
+  border: 1px solid var(--border-faint);
+  border-radius: $radius-control;
   font-size: $font-size-sm;
+  white-space: nowrap;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
 }
 
 .tab:hover {
+  border-color: var(--border-default);
   color: var(--text-primary);
 }
 
-.tabActive {
-  color: var(--text-primary);
+.tabActive,
+.tabActive:hover {
+  background: var(--bg-surface);
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-control);
   font-weight: 600;
-  border-bottom-color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .table {
@@ -43,8 +58,10 @@
 
 .table th {
   background: var(--bg-subtle);
+  font-size: $font-size-xs;
   font-weight: 600;
-  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
 }
 
 .num {
@@ -52,9 +69,9 @@
 }
 
 .empty {
-  border: 1px solid var(--border-default);
-  background: var(--bg-surface);
-  border-radius: $radius-md;
+  border: 1px dashed var(--border-strong);
+  background: transparent;
+  border-radius: $radius-lg;
   padding: $space-8;
   text-align: center;
   color: var(--text-secondary);

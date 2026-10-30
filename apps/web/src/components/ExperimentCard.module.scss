@@ -1,29 +1,40 @@
 @use "../styles/tokens" as *;
 
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--border-default);
+  border-radius: $radius-lg;
   background: var(--bg-surface);
-  border-radius: $radius-md;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
   text-decoration: none;
-  transition: border-color 0.15s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .card:hover {
+  transform: translateY(-2px);
   border-color: var(--border-strong);
+  box-shadow: var(--shadow-raised);
 }
 
 .thumb {
   position: relative;
+  flex-shrink: 0;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-bottom: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-faint);
   background: var(--bg-subtle);
 }
 
 .thumbInner {
   position: absolute;
   inset: 0;
+  transition: transform 0.45s cubic-bezier(0.22, 0.68, 0.24, 1);
+}
+
+.card:hover .thumbInner {
+  transform: scale(1.02);
 }
 
 .badge {
@@ -32,40 +43,51 @@
   right: $space-2;
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
-  border-radius: $radius-sm;
-  padding: 0 6px;
-  font-size: $font-size-xs;
+  border-radius: $radius-pill;
+  padding: 1px 8px;
+  font-size: 11px;
+  letter-spacing: 0.02em;
   color: var(--text-secondary);
+  box-shadow: var(--shadow-control);
 }
 
 .body {
-  padding: $space-4;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: $space-4 $space-4 18px;
 }
 
 .titleRow {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: $space-2;
 }
 
 .title {
-  font-size: 15px;
+  font-family: var(--font-display);
+  font-size: 17px;
   font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
   color: var(--text-primary);
 }
 
 .subtitle {
-  margin-top: 2px;
+  margin-top: 6px;
   font-size: $font-size-sm;
+  line-height: 1.5;
   color: var(--text-secondary);
 }
 
 .meta {
-  margin-top: $space-2;
+  margin-top: auto;
+  padding-top: $space-3;
   font-size: $font-size-xs;
   color: var(--text-muted);
   display: flex;
   gap: $space-2;
   flex-wrap: wrap;
+  font-variant-numeric: tabular-nums;
 }

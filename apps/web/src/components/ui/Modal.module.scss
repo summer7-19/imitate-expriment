@@ -8,16 +8,30 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
+  padding: $space-4;
 }
 
 .dialog {
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
-  border-radius: $radius-md;
-  box-shadow: var(--shadow-sm);
-  max-width: 420px;
-  width: calc(100% - $space-8);
-  padding: $space-4;
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-raised);
+  max-width: 440px;
+  width: 100%;
+  padding: $space-6;
+  animation: dialogIn 0.18s ease-out both;
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .title {
@@ -25,7 +39,7 @@
 }
 
 .actions {
-  margin-top: $space-4;
+  margin-top: $space-6;
   display: flex;
   justify-content: flex-end;
   gap: $space-2;

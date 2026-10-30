@@ -3,51 +3,81 @@
 .button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: $space-2;
-  padding: 6px $space-3;
-  border-radius: $radius-md;
+  padding: 7px 14px;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-control;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
   font-size: $font-size-sm;
   font-weight: 600;
-  border: 1px solid transparent;
+  line-height: 1.2;
+  color: var(--text-primary);
   cursor: pointer;
-  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s,
+    transform 0.15s;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--border-strong);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-page), 0 0 0 4px var(--accent);
 }
 
 .button:disabled {
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .primary {
   background: var(--accent);
+  border-color: var(--accent-hover);
   color: #fff;
 }
 
 .primary:hover:not(:disabled) {
   background: var(--accent-hover);
+  border-color: var(--accent-ink);
 }
 
 .secondary {
-  background: transparent;
-  border-color: var(--border-default);
+  background: var(--bg-surface);
   color: var(--text-primary);
 }
 
 .secondary:hover:not(:disabled) {
-  border-color: var(--border-strong);
+  background: var(--bg-subtle);
 }
 
 .ghost {
   background: transparent;
+  border-color: var(--border-default);
   color: var(--text-secondary);
 }
 
 .ghost:hover:not(:disabled) {
-  background: var(--bg-subtle);
+  background: var(--bg-surface);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
 }
 
 .dangerText {
   background: transparent;
-  color: var(--danger);
   border-color: var(--border-default);
+  color: var(--danger);
+}
+
+.dangerText:hover:not(:disabled) {
+  background: rgba(156, 74, 66, 0.06);
+  border-color: var(--danger);
 }

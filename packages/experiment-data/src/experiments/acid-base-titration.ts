@@ -5,7 +5,7 @@ const stepFrames = [360, 420, 300, 330];
 
 export const acidBaseTitrationMeta: ExperimentMeta = {
   id: "acid-base-titration",
-  category: "chemistry",
+  category: "senior-chemistry",
   difficulty: 1,
   modes: ["animation", "virtual-ops"],
   compositionId: "acid-base-titration",

@@ -15,10 +15,22 @@ const REPRESENTATIVE_FRAME: Record<string, number> = {
   "photoelectric-effect": 1120,
   "freezing-point-depression": 1150,
   spectrophotometry: 1150,
+  "lens-imaging": 900,
+  "voltmeter-ammeter-resistance": 960,
+  "lever-balance": 900,
+  "oxygen-preparation": 1170,
+  "carbon-dioxide-preparation": 1180,
+  "crude-salt-purification": 900,
+  "solution-preparation": 960,
+  "newtons-second-law": 1150,
+  "mechanical-energy-conservation": 1000,
+  "emf-internal-resistance": 1150,
+  "reaction-rate-factors": 1000,
+  "galvanic-cell": 900,
 };
 
 /**
- * 缩略图懒加载：Thumbnail 是真实的 Remotion 渲染实例，6 张卡片全部挂载内存压力过大，
+ * 缩略图懒加载：Thumbnail 是真实的 Remotion 渲染实例，全部卡片同时挂载内存压力过大，
  * 进入视口后才真正挂载。
  */
 function LazyThumb({

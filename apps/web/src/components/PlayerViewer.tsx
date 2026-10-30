@@ -70,7 +70,12 @@ export function PlayerViewer({
         fps={entry.fps}
         compositionWidth={entry.width}
         compositionHeight={entry.height}
-        style={{ width: "100%", aspectRatio: `${entry.width} / ${entry.height}` }}
+        style={{
+          width: "100%",
+          aspectRatio: `${entry.width} / ${entry.height}`,
+          borderRadius: 6,
+          overflow: "hidden",
+        }}
       />
       <div className={styles.controls}>
         <Button variant="secondary" onClick={togglePlay} aria-label={playing ? t("player.pause") : t("player.play")}>

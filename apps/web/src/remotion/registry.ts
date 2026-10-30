@@ -13,6 +13,18 @@ import { ConductometricTitration } from "./experiments/ConductometricTitration";
 import { PhotoelectricEffect } from "./experiments/PhotoelectricEffect";
 import { FreezingPointDepression } from "./experiments/FreezingPointDepression";
 import { Spectrophotometry } from "./experiments/Spectrophotometry";
+import { LensImaging } from "./experiments/LensImaging";
+import { VoltmeterAmmeterResistance } from "./experiments/VoltmeterAmmeterResistance";
+import { LeverBalance } from "./experiments/LeverBalance";
+import { OxygenPreparation } from "./experiments/OxygenPreparation";
+import { CarbonDioxidePreparation } from "./experiments/CarbonDioxidePreparation";
+import { CrudeSaltPurification } from "./experiments/CrudeSaltPurification";
+import { SolutionPreparation } from "./experiments/SolutionPreparation";
+import { NewtonsSecondLaw } from "./experiments/NewtonsSecondLaw";
+import { MechanicalEnergyConservation } from "./experiments/MechanicalEnergyConservation";
+import { EmfInternalResistance } from "./experiments/EmfInternalResistance";
+import { ReactionRateFactors } from "./experiments/ReactionRateFactors";
+import { GalvanicCell } from "./experiments/GalvanicCell";
 
 /** 必须是 type alias（而非 interface）：Remotion 要求组件 props 满足 Record<string, unknown> */
 export type CompositionProps = {
@@ -43,6 +55,18 @@ const COMPONENTS: Record<string, React.FC<CompositionProps>> = {
   "photoelectric-effect": PhotoelectricEffect,
   "freezing-point-depression": FreezingPointDepression,
   spectrophotometry: Spectrophotometry,
+  "lens-imaging": LensImaging,
+  "voltmeter-ammeter-resistance": VoltmeterAmmeterResistance,
+  "lever-balance": LeverBalance,
+  "oxygen-preparation": OxygenPreparation,
+  "carbon-dioxide-preparation": CarbonDioxidePreparation,
+  "crude-salt-purification": CrudeSaltPurification,
+  "solution-preparation": SolutionPreparation,
+  "newtons-second-law": NewtonsSecondLaw,
+  "mechanical-energy-conservation": MechanicalEnergyConservation,
+  "emf-internal-resistance": EmfInternalResistance,
+  "reaction-rate-factors": ReactionRateFactors,
+  "galvanic-cell": GalvanicCell,
 };
 
 export const COMPOSITIONS: Record<string, CompositionEntry> = Object.fromEntries(

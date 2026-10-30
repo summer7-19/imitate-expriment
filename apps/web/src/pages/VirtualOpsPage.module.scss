@@ -11,6 +11,28 @@
   flex-wrap: wrap;
   align-items: center;
   gap: $space-3;
+  padding-bottom: $space-4;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px $space-3;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-pill;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+
+.backLink:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-subtle);
+  color: var(--text-primary);
 }
 
 .progress {
@@ -21,10 +43,10 @@
 }
 
 .sceneBox {
-  border: 1px solid var(--border-default);
-  background: var(--bg-surface);
-  border-radius: $radius-md;
-  padding: $space-4;
+  border: 1px solid var(--border-faint);
+  background: var(--bg-page);
+  border-radius: $radius-control;
+  padding: $space-3;
 }
 
 .sceneLabel {
@@ -43,25 +65,30 @@
 .actionBtn {
   border: 1px solid var(--border-default);
   background: var(--bg-surface);
-  border-radius: $radius-md;
+  border-radius: $radius-control;
+  box-shadow: var(--shadow-control);
   padding: 6px $space-3;
   font-size: $font-size-sm;
   color: var(--text-primary);
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s;
+  transition: border-color 0.15s, color 0.15s, background-color 0.15s;
 }
 
 .actionBtn:hover:enabled {
   border-color: var(--border-strong);
+  background: var(--bg-subtle);
 }
 
 .actionBtn:disabled {
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
-.actionBtnCurrent {
+.actionBtnCurrent,
+.actionBtnCurrent:hover:enabled {
   border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
 }
 
 .paramGroup {
@@ -69,7 +96,9 @@
   align-items: center;
   gap: $space-2;
   border: 1px solid var(--border-default);
-  border-radius: $radius-md;
+  border-radius: $radius-control;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
   padding: 4px $space-3;
 }
 
@@ -86,29 +115,34 @@
 .measureInput {
   width: 110px;
   border: 1px solid var(--border-default);
-  border-radius: $radius-md;
+  border-radius: $radius-control;
   background: var(--bg-surface);
   color: var(--text-primary);
   font-size: $font-size-sm;
-  padding: 5px $space-2;
+  padding: 4px $space-2;
   font-variant-numeric: tabular-nums;
 }
 
 .feedback {
-  border-left: 2px solid var(--info);
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  border-radius: $radius-control;
   padding: $space-2 $space-3;
   font-size: $font-size-sm;
   color: var(--text-secondary);
-  background: var(--bg-surface);
-  border-top: none;
 }
 
 .feedbackOk {
-  border-left-color: var(--success);
+  border-color: rgba(90, 125, 90, 0.4);
+  background: rgba(90, 125, 90, 0.07);
   color: var(--success);
 }
 
 .feedbackErr {
-  border-left-color: var(--danger);
+  border-color: rgba(156, 74, 66, 0.4);
+  background: rgba(156, 74, 66, 0.06);
   color: var(--danger);
 }

@@ -20,11 +20,18 @@
 
 .select {
   border: 1px solid var(--border-default);
-  border-radius: $radius-md;
+  border-radius: $radius-control;
   background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
   color: var(--text-primary);
   font-size: $font-size-sm;
   padding: 6px $space-2;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.select:hover {
+  border-color: var(--border-strong);
 }
 
 .hint {
@@ -34,8 +41,10 @@
 }
 
 .errorText {
-  border-left: 2px solid var(--danger);
-  padding-left: $space-3;
+  border: 1px solid rgba(156, 74, 66, 0.35);
+  border-radius: $radius-control;
+  background: rgba(156, 74, 66, 0.05);
+  padding: 6px $space-3;
   font-size: $font-size-sm;
   color: var(--danger);
 }
@@ -50,9 +59,9 @@
 }
 
 .job {
-  border: 1px solid var(--border-default);
-  background: var(--bg-surface);
-  border-radius: $radius-md;
+  border: 1px solid var(--border-faint);
+  background: var(--bg-page);
+  border-radius: $radius-control;
   padding: $space-3;
 }
 
@@ -100,7 +109,7 @@
   margin-top: $space-2;
   height: 4px;
   overflow: hidden;
-  border-radius: $radius-sm;
+  border-radius: $radius-pill;
   background: var(--bg-subtle);
 }
 
@@ -127,25 +136,37 @@
 }
 
 .download {
-  font-size: $font-size-sm;
+  margin-left: auto;
+  font-size: $font-size-xs;
   font-weight: 600;
   color: var(--accent);
   text-decoration: none;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-control;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
+  padding: 2px $space-2;
+  transition: border-color 0.15s, background-color 0.15s;
 }
 
 .download:hover {
-  text-decoration: underline;
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .clear {
-  border: none;
-  background: transparent;
-  font-size: $font-size-sm;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-control;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
+  font-size: $font-size-xs;
   color: var(--danger);
   cursor: pointer;
-  padding: 0;
+  padding: 2px $space-2;
+  transition: border-color 0.15s, background-color 0.15s;
 }
 
 .clear:hover {
-  text-decoration: underline;
+  border-color: var(--danger);
+  background: rgba(156, 74, 66, 0.05);
 }

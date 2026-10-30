@@ -5,7 +5,7 @@ const stepFrames = [360, 420, 330, 360];
 
 export const spectrophotometryMeta: ExperimentMeta = {
   id: "spectrophotometry",
-  category: "chemistry",
+  category: "physical-chemistry",
   difficulty: 1,
   modes: ["animation"],
   compositionId: "spectrophotometry",

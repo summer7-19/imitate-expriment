@@ -8,13 +8,21 @@ $space-8: 32px;
 $space-12: 48px;
 
 $radius-sm: 4px;
-$radius-md: 6px;
+$radius-control: 8px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-pill: 999px;
 
 $font-size-xs: 12px;
 $font-size-sm: 14px;
 $font-size-md: 16px;
 $font-size-lg: 18px;
 $font-size-xl: 24px;
+$font-size-2xl: 34px;
+
+$font-display: "Iowan Old Style", "Palatino Linotype", "Source Han Serif SC",
+  "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+$font-mono: "SFMono-Regular", "Cascadia Mono", "JetBrains Mono", Consolas, monospace;
 
 :root {
   --bg-page: #f7f6f3;
@@ -22,14 +30,26 @@ $font-size-xl: 24px;
   --bg-subtle: #efede8;
   --text-primary: #2b2a27;
   --text-secondary: #6b6862;
-  --text-muted: #9c9890;
+  --text-muted: #716e67;
+  --border-faint: #eae6df;
   --border-default: #ddd9d2;
   --border-strong: #c4bfb6;
   --accent: #4a6b5d;
   --accent-hover: #3d5a4e;
+  --accent-soft: #e9efeb;
+  --accent-ink: #34493f;
   --success: #5a7d5a;
-  --warning: #a67c3d;
+  --warning: #8f6a2b;
   --danger: #9c4a42;
   --info: #4a6275;
   --shadow-sm: 0 1px 2px rgba(43, 42, 39, 0.06);
+  --shadow-card: 0 1px 2px rgba(43, 42, 39, 0.04),
+    0 10px 24px -18px rgba(43, 42, 39, 0.28);
+  --shadow-raised: 0 2px 4px rgba(43, 42, 39, 0.06),
+    0 16px 32px -20px rgba(43, 42, 39, 0.34);
+  --shadow-control: 0 1px 0 rgba(43, 42, 39, 0.04);
+  --focus-ring: 0 0 0 3px rgba(74, 107, 93, 0.16);
+  --font-display: #{$font-display};
+  --font-mono: #{$font-mono};
 }
+

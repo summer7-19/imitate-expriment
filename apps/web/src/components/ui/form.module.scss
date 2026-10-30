@@ -8,12 +8,18 @@
 
 .select {
   border: 1px solid var(--border-default);
-  border-radius: $radius-md;
+  border-radius: $radius-control;
   background: var(--bg-surface);
+  box-shadow: var(--shadow-control);
   color: var(--text-primary);
   font-size: $font-size-sm;
-  padding: 4px $space-2;
+  padding: 5px $space-2;
   cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.select:hover {
+  border-color: var(--border-strong);
 }
 
 .wrapper {
@@ -58,7 +64,7 @@
   border-radius: 50%;
   border: 1px solid var(--border-strong);
   background: var(--bg-surface);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-control);
 }
 
 .input::-moz-range-thumb {
@@ -73,7 +79,7 @@
   position: relative;
   height: 20px;
   width: 36px;
-  border-radius: 50%;
+  border-radius: $radius-pill;
   border: 1px solid var(--border-default);
   background: var(--bg-subtle);
   cursor: pointer;
@@ -81,7 +87,7 @@
 }
 
 .toggleOn {
-  border-color: var(--accent);
+  border-color: var(--accent-hover);
   background: var(--accent);
 }
 

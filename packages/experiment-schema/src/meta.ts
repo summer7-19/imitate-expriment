@@ -2,7 +2,12 @@ import type { ErrorScenario, QuizQuestion } from "./storyboard";
 import type { NormalRange, ParameterDef } from "./params";
 
 export type Locale = "zh-CN" | "en-US" | "ja-JP";
-export type ExperimentCategory = "physics" | "chemistry" | "physical-chemistry";
+export type ExperimentCategory =
+  | "junior-physics"
+  | "junior-chemistry"
+  | "senior-physics"
+  | "senior-chemistry"
+  | "physical-chemistry";
 export type ExperimentMode = "animation" | "virtual-ops";
 
 /**

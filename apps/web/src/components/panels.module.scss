@@ -49,8 +49,10 @@
 
 .errorText {
   margin-top: $space-2;
-  padding-left: $space-2;
-  border-left: 2px solid var(--danger);
+  border: 1px solid rgba(156, 74, 66, 0.35);
+  border-radius: $radius-control;
+  background: rgba(156, 74, 66, 0.05);
+  padding: 4px $space-2;
   font-size: $font-size-xs;
   color: var(--danger);
 }
@@ -84,8 +86,10 @@
 
 .scenarioActive {
   margin-top: $space-2;
-  border-left: 2px solid var(--danger);
-  padding-left: $space-3;
+  border: 1px solid rgba(156, 74, 66, 0.3);
+  border-radius: $radius-control;
+  background: rgba(156, 74, 66, 0.05);
+  padding: $space-2 $space-3;
 }
 
 .scenarioText {

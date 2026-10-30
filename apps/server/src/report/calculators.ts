@@ -17,6 +17,19 @@ import {
   stoppingVoltage,
 } from "@physchem/experiment-data";
 import { defaultParams } from "@physchem/experiment-schema";
+import { leastSquares, num, relErr, type CalcResult } from "./types";
+import { lensImagingCalculator } from "./experiments/lens-imaging";
+import { voltmeterAmmeterResistanceCalculator } from "./experiments/voltmeter-ammeter-resistance";
+import { leverBalanceCalculator } from "./experiments/lever-balance";
+import { oxygenPreparationCalculator } from "./experiments/oxygen-preparation";
+import { carbonDioxidePreparationCalculator } from "./experiments/carbon-dioxide-preparation";
+import { crudeSaltPurificationCalculator } from "./experiments/crude-salt-purification";
+import { solutionPreparationCalculator } from "./experiments/solution-preparation";
+import { newtonsSecondLawCalculator } from "./experiments/newtons-second-law";
+import { mechanicalEnergyConservationCalculator } from "./experiments/mechanical-energy-conservation";
+import { emfInternalResistanceCalculator } from "./experiments/emf-internal-resistance";
+import { reactionRateFactorsCalculator } from "./experiments/reaction-rate-factors";
+import { galvanicCellCalculator } from "./experiments/galvanic-cell";
 
 /** 确定性伪随机（报告可复现） */
 function mulberry32(seed: number): () => number {
@@ -30,43 +43,47 @@ function mulberry32(seed: number): () => number {
   };
 }
 
-interface CalcResult {
-  measurements: MeasurementRow[];
-  calculations: CalculationStep[];
-  errorAnalysis: string;
-  conclusion: string;
-  warnings: string[];
-}
-
-type Calculator = (ctx: {
+const CALCULATORS: Record<string, (ctx: {
   locale: Locale;
   params: ParamValues;
   rng: () => number;
-}) => CalcResult;
+}) => CalcResult> = {
+  /* ---------- 凸透镜成像 ---------- */
+  "lens-imaging": lensImagingCalculator,
 
-const num = (p: ParamValues, key: string, fallback: number): number => {
-  const v = Number(p[key]);
-  return Number.isFinite(v) ? v : fallback;
-};
+  /* ---------- 伏安法测电阻 ---------- */
+  "voltmeter-ammeter-resistance": voltmeterAmmeterResistanceCalculator,
 
-const relErr = (measured: number, truth: number) =>
-  truth === 0 ? 0 : (Math.abs(measured - truth) / truth) * 100;
+  /* ---------- 杠杆平衡 ---------- */
+  "lever-balance": leverBalanceCalculator,
 
-function leastSquares(xs: number[], ys: number[]): { slope: number; intercept: number } {
-  const n = xs.length;
-  const mx = xs.reduce((a, b) => a + b, 0) / n;
-  const my = ys.reduce((a, b) => a + b, 0) / n;
-  let num2 = 0;
-  let den = 0;
-  for (let i = 0; i < n; i++) {
-    num2 += (xs[i] - mx) * (ys[i] - my);
-    den += (xs[i] - mx) ** 2;
-  }
-  const slope = den === 0 ? 0 : num2 / den;
-  return { slope, intercept: my - slope * mx };
-}
+  /* ---------- 氧气制取 ---------- */
+  "oxygen-preparation": oxygenPreparationCalculator,
 
-const CALCULATORS: Record<string, Calculator> = {
+  /* ---------- 二氧化碳制取 ---------- */
+  "carbon-dioxide-preparation": carbonDioxidePreparationCalculator,
+
+  /* ---------- 粗盐提纯 ---------- */
+  "crude-salt-purification": crudeSaltPurificationCalculator,
+
+  /* ---------- 一定浓度溶液的配制 ---------- */
+  "solution-preparation": solutionPreparationCalculator,
+
+  /* ---------- 牛顿第二定律 ---------- */
+  "newtons-second-law": newtonsSecondLawCalculator,
+
+  /* ---------- 机械能守恒 ---------- */
+  "mechanical-energy-conservation": mechanicalEnergyConservationCalculator,
+
+  /* ---------- 电动势与内阻 ---------- */
+  "emf-internal-resistance": emfInternalResistanceCalculator,
+
+  /* ---------- 影响反应速率的因素 ---------- */
+  "reaction-rate-factors": reactionRateFactorsCalculator,
+
+  /* ---------- 原电池 ---------- */
+  "galvanic-cell": galvanicCellCalculator,
+
   /* ---------- 酸碱滴定 ---------- */
   "acid-base-titration": ({ locale, params, rng }) => {
     const ca = num(params, "acidConcentration", 0.1);

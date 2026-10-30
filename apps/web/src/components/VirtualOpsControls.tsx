@@ -87,7 +87,7 @@ export function ActionBar({
   );
 }
 
-/** 检查点/操作反馈条：文字 + 左侧 2px 色条，不用弹窗 */
+/** 检查点/操作反馈条：文字 + 细边框提示，不用弹窗 */
 export function CheckpointFeedback({
   text,
   kind,

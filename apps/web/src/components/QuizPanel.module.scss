@@ -1,7 +1,15 @@
 @use "../styles/tokens" as *;
 
+.panel {
+  margin-top: $space-6;
+}
+
 .question {
   margin-bottom: $space-6;
+}
+
+.question:last-child {
+  margin-bottom: 0;
 }
 
 .stem {
@@ -16,40 +24,48 @@
   text-align: left;
   border: 1px solid var(--border-default);
   background: var(--bg-surface);
-  border-radius: $radius-md;
+  border-radius: $radius-control;
+  box-shadow: var(--shadow-control);
   padding: $space-2 $space-3;
   font-size: $font-size-sm;
   color: var(--text-primary);
   cursor: pointer;
   margin-top: $space-2;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, background-color 0.15s;
 }
 
 .option:hover:enabled {
   border-color: var(--border-strong);
+  background: var(--bg-subtle);
 }
 
 .option:disabled {
   cursor: default;
 }
 
-.optionPicked {
+.optionPicked,
+.optionPicked:hover:enabled {
   border-color: var(--accent);
-  background: var(--bg-subtle);
+  background: var(--accent-soft);
+  color: var(--accent-ink);
 }
 
 .feedback {
   margin-top: $space-3;
-  padding-left: $space-3;
-  border-left: 2px solid transparent;
+  border: 1px solid var(--border-default);
+  border-radius: $radius-control;
+  background: var(--bg-subtle);
+  padding: $space-2 $space-3;
 }
 
 .feedbackOk {
-  border-left-color: var(--success);
+  border-color: rgba(90, 125, 90, 0.4);
+  background: rgba(90, 125, 90, 0.06);
 }
 
 .feedbackErr {
-  border-left-color: var(--danger);
+  border-color: rgba(156, 74, 66, 0.4);
+  background: rgba(156, 74, 66, 0.05);
 }
 
 .verdict {
@@ -68,7 +84,7 @@
 .explanation {
   margin-top: $space-1;
   padding-top: $space-2;
-  border-top: 1px solid var(--border-default);
+  border-top: 1px solid var(--border-faint);
   font-size: $font-size-sm;
   color: var(--text-secondary);
 }
